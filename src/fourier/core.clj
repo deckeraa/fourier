@@ -21,6 +21,11 @@
     0
     (/ 8 (* n n Math/PI Math/PI))))
 
+(defn bn5_a [n]
+  (if (odd? n)
+    (/ 12 (* n Math/PI))
+    0))
+
 ; Compute an individual cosine term: a_n * cos( (n pi x)/T )
 (defn cosine-term [T an n x]
   (* (an n) (Math/cos (/ (* n Math/PI x) T))))
@@ -45,11 +50,12 @@
 ; Plots the Fourier series
 ; fourier-series needs to be a function that takes in one parameter, x
 (defn view-fourier-graph [fourier-series]
-  (core/view (charts/function-plot fourier-series -10 10)))
+  (core/view (charts/function-plot fourier-series -5 5)))
 
 ;; ((partial fourier 5 0 nil bn1 30) 3) ;; computing using the fourier series
 
 ;; execute the following line to make the graph
 (view-fourier-graph (partial fourier 5 0 nil bn1 30))
-(view-fourier-graph (partial fourier 2 0 an2_b nil 100))
+(view-fourier-graph (partial fourier 2 0 an2_b nil 10))
+(view-fourier-graph (partial fourier 1 0 nil bn5_a 10))
 
