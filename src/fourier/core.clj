@@ -9,7 +9,17 @@
 
 ;; user-supplied function
 (defn bn1 [n]
-  (/ 8 (* Math/PI (- (* 2 n) 1))))
+  (if (even? n)
+    0
+    (/ 4 (* n Math/PI))))
+
+;; (defn bn1 [n]
+;;   (/ 8 (* Math/PI (- (* 2 n) 1))))
+
+(defn an2_b [n]
+  (if (even? n)
+    0
+    (/ 8 (* n n Math/PI Math/PI))))
 
 ; Compute an individual cosine term: a_n * cos( (n pi x)/T )
 (defn cosine-term [T an n x]
@@ -41,4 +51,5 @@
 
 ;; execute the following line to make the graph
 (view-fourier-graph (partial fourier 5 0 nil bn1 30))
+(view-fourier-graph (partial fourier 2 0 an2_b nil 100))
 
