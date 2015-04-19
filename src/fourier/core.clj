@@ -42,6 +42,12 @@
   (if (odd? n)
     (/ -400 (* n n Math/PI Math/PI))
     0))
+    
+
+(defn bn5_a [n]
+  (if (odd? n)
+    (/ 12 (* n Math/PI))
+    0))
 
 ; Compute an individual cosine term: a_n * cos( (n pi x)/T )
 (defn cosine-term [T an n x]
@@ -78,5 +84,5 @@
 ;; (view-fourier-graph (partial fourier 3 0 an2_c nil 20))
 ;; (view-fourier-graph (partial fourier 3 0 nil bn2_c 30))
 ;; (view-fourier-graph (partial fourier 40 0 nil bn_5 30))
-(view-fourier-graph (partial fourier 50 0 an_5 nil 30))
+;; (view-fourier-graph (partial fourier 50 0 an_5 nil 30))
 
